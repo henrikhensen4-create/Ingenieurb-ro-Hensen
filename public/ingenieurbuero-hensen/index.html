@@ -4,474 +4,462 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ingenieurbüro Hensen — Beratung & Planung Erneuerbare Energien</title>
-  <meta name="description" content="Unabhängige Beratung und Planung für Windenergie und Photovoltaik. Dipl.-Ing. (FH) Jörg Hensen, Halle (Saale) — seit 2004 in der Projektentwicklung erneuerbarer Energien." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: '#1A2B4C',
-            'navy-dark': '#0F1C33',
-            gold: '#F2A900',
-            'ib-green': '#7CB342',
-          },
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-        }
-      }
-    }
-  </script>
+  <meta name="description" content="Unabhängige Beratung und Planung für Windenergie und Photovoltaik. Dipl.-Ing. (FH) Jörg Hensen, Halle (Saale)." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    html { scroll-behavior: smooth; }
-    *:focus-visible { outline: 2px solid #1A2B4C; outline-offset: 3px; }
-    .divider { background: linear-gradient(90deg, transparent, #1A2B4C1A, transparent); height: 1px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1A2B4C;
+      --navy-light: #2d3f60;
+      --gold: #F2A900;
+      --green: #7CB342;
+      --gray-50: #F8F9FA;
+      --gray-100: #F1F3F5;
+      --gray-300: #DEE2E6;
+      --gray-500: #868E96;
+      --gray-700: #495057;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--navy);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    *:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { font-size: 14px; color: var(--gray-700); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+    .btn {
+      display: inline-flex; align-items: center;
+      background: var(--navy); color: #fff;
+      font-size: 13px; font-weight: 500;
+      padding: 10px 20px; border-radius: 6px;
+      border: none; cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--navy-light); }
+    .btn-outline {
+      background: transparent; color: var(--navy);
+      border: 1px solid var(--gray-300);
+    }
+    .btn-outline:hover { border-color: var(--navy); background: var(--gray-50); }
+
+    /* HERO */
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: start;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 600; line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 17px; color: var(--gray-700);
+      line-height: 1.7; max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Contact card in hero */
+    .contact-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-300);
+      border-radius: 10px;
+      padding: 28px;
+      margin-top: 8px;
+    }
+    .contact-card-name {
+      font-size: 15px; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .contact-card-title {
+      font-size: 12px; color: var(--gray-500);
+      margin-bottom: 24px;
+    }
+    .contact-card-row {
+      display: flex; gap: 10px; align-items: flex-start;
+      margin-bottom: 12px; font-size: 13px; color: var(--gray-700);
+    }
+    .contact-card-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray-500);
+      margin-top: 1px; min-width: 52px;
+    }
+    .contact-card a:hover { color: var(--navy); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-300); }
+    .tag {
+      font-size: 10px; font-weight: 500;
+      padding: 3px 8px; border-radius: 4px;
+      background: #fff; border: 1px solid var(--gray-300);
+      color: var(--gray-700);
+    }
+
+    /* SECTION */
+    section { padding: 80px 0; border-bottom: 1px solid var(--gray-300); }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 28px; font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.2;
+      margin-bottom: 40px;
+    }
+
+    /* ÜBER */
+    .ueber-grid {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 64px; align-items: start;
+    }
+    .ueber-meta { font-size: 13px; color: var(--gray-500); line-height: 2; }
+    .ueber-meta strong { color: var(--navy); font-weight: 500; }
+    .ueber-text p {
+      font-size: 16px; color: var(--gray-700);
+      line-height: 1.8; margin-bottom: 20px;
+    }
+    .ueber-text p:last-child { margin-bottom: 0; }
+
+    /* LEISTUNGEN */
+    .leistungen-list { display: flex; flex-direction: column; }
+    .leistung {
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 0 32px; padding: 32px 0;
+      border-top: 1px solid var(--gray-300);
+    }
+    .leistung:last-child { border-bottom: 1px solid var(--gray-300); }
+    .leistung-nr {
+      font-size: 12px; font-weight: 600;
+      color: var(--gray-500); padding-top: 4px;
+    }
+    .leistung-body h3 {
+      font-size: 17px; font-weight: 600;
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .leistung-body p {
+      font-size: 15px; color: var(--gray-700); line-height: 1.7;
+    }
+    .leistung-punkte {
+      list-style: none; margin-top: 12px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .leistung-punkte li {
+      font-size: 12px; color: var(--gray-500);
+      padding: 2px 0;
+    }
+    .leistung-punkte li::before {
+      content: "— "; color: var(--gray-300);
+    }
+
+    /* KONTAKT */
+    .kontakt-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .kontakt-intro p {
+      font-size: 16px; color: var(--gray-700);
+      line-height: 1.8; margin-bottom: 32px;
+    }
+    .kontakt-detail { font-size: 14px; color: var(--gray-700); line-height: 2; }
+    .kontakt-detail a:hover { color: var(--navy); }
+
+    form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    label { display: block; font-size: 12px; font-weight: 500; color: var(--gray-500); margin-bottom: 6px; letter-spacing: 0.04em; }
+    input, textarea {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--gray-300); border-radius: 6px;
+      font-family: inherit; font-size: 14px;
+      color: var(--navy); background: #fff;
+      outline: none; transition: border-color 0.15s;
+    }
+    input:focus, textarea:focus { border-color: var(--navy); }
+    input::placeholder, textarea::placeholder { color: var(--gray-500); font-size: 13px; }
+    textarea { resize: none; }
+    .form-note { font-size: 12px; color: var(--gray-500); }
+    .alert { padding: 12px 16px; border-radius: 6px; font-size: 13px; display: none; margin-top: 4px; }
+    .alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+    .alert-error   { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 0; border-top: 1px solid var(--gray-300);
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-links { display: flex; gap: 24px; font-size: 13px; color: var(--gray-500); }
+    .footer-links a:hover { color: var(--navy); }
+
+    /* MOBILE */
+    @media (max-width: 720px) {
+      .container { padding: 0 20px; }
+      .hero { padding: 56px 0 48px; }
+      .hero-grid, .ueber-grid, .kontakt-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      section { padding: 56px 0; }
+    }
   </style>
 </head>
-<body class="bg-white text-navy font-sans antialiased">
+<body>
 
-  <!-- NAVIGATION -->
-  <header id="top" class="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-navy/8" style="height:72px">
-    <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
-      <a href="#top" class="shrink-0">
-        <img src="/ingenieurbuero-hensen/logo.png" alt="Ingenieurbüro Hensen" class="h-9 w-auto" />
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top">
+        <img src="/ingenieurbuero-hensen/logo.png" alt="Ingenieurbüro Hensen" style="height:34px;width:auto;" />
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-navy/60">
-        <a href="#ueber"      class="hover:text-navy transition-colors">Über uns</a>
-        <a href="#leistungen" class="hover:text-navy transition-colors">Leistungen</a>
-
-        <a href="#kontakt"    class="hover:text-navy transition-colors">Kontakt</a>
-      </nav>
-      <a href="#kontakt" class="hidden sm:inline-flex bg-navy text-white text-sm font-medium rounded-md px-5 py-2.5 hover:bg-navy-dark transition-colors">
-        Kontakt aufnehmen
-      </a>
-      <button id="menu-toggle" class="md:hidden p-2" aria-label="Menü" aria-expanded="false">
-        <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <path d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-        <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <path d="M18 6L6 18M6 6l12 12"/>
-        </svg>
-      </button>
+      <div class="nav-links">
+        <a href="#ueber">Über</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#kontakt" class="btn">Projekt anfragen</a>
+      </div>
     </div>
-    <div id="mobile-nav" class="hidden md:hidden border-t border-navy/8 bg-white px-6 py-5 flex flex-col gap-4 text-sm font-medium">
-      <a href="#ueber"      onclick="closeMobileMenu()">Über uns</a>
-      <a href="#leistungen" onclick="closeMobileMenu()">Leistungen</a>
-      <a href="#kontakt"    onclick="closeMobileMenu()" class="bg-navy text-white rounded-md px-4 py-2.5 text-center">Kontakt aufnehmen</a>
-    </div>
-  </header>
+  </nav>
 
-  <main>
-
-    <!-- HERO -->
-    <section class="relative overflow-hidden bg-white border-b border-navy/8">
-      <!-- Dot grid -->
-      <div class="absolute inset-0 opacity-[0.06]" aria-hidden="true"
-        style="background-image:radial-gradient(#1A2B4C 1px,transparent 1px);background-size:28px 28px"></div>
-
-      <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- Left: copy -->
+  <!-- HERO -->
+  <div id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
         <div>
-          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-navy/45 mb-5">
-            Beratung · Planung · Projektentwicklung
+          <p class="hero-eyebrow">Ingenieurbüro Hensen · Halle (Saale)</p>
+          <h1>Erneuerbare Energien.<br/>Unabhängig geplant.</h1>
+          <p>
+            Dipl.-Ing. (FH) Jörg Hensen begleitet Windenergie- und Photovoltaikprojekte
+            von der ersten Standorteinschätzung bis zur genehmigungsreifen Planung —
+            seit über 20 Jahren.
           </p>
-          <h1 class="text-4xl md:text-[3.2rem] font-bold tracking-tight leading-[1.1] text-navy">
-            Erneuerbare<br/>Energien<br/>
-            <span class="text-navy/50 font-light">professionell</span><br/>
-            planen.
-          </h1>
-          <p class="mt-6 text-base text-navy/65 max-w-md leading-relaxed">
-            Unabhängige Ingenieurplanung für Windenergie- und Photovoltaikprojekte —
-            von der Standorteinschätzung bis zur genehmigungsreifen Ausführungsplanung.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#kontakt" class="inline-flex items-center gap-2 bg-navy text-white text-sm font-medium rounded-md px-6 py-3 hover:bg-navy-dark transition-colors">
-              Kontakt aufnehmen
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="#leistungen" class="inline-flex items-center border border-navy/20 text-navy text-sm font-medium rounded-md px-6 py-3 hover:border-navy/40 transition-colors">
-              Leistungen ansehen
-            </a>
-          </div>
-          <!-- Badges -->
-          <div class="mt-8 flex flex-wrap gap-2">
-            <span class="inline-flex items-center gap-1.5 text-xs text-navy/60 bg-navy/5 rounded-full px-3 py-1.5">
-              <span class="h-1.5 w-1.5 rounded-full bg-ib-green"></span>Bauvorlageberechtigung
-            </span>
-            <span class="inline-flex items-center gap-1.5 text-xs text-navy/60 bg-navy/5 rounded-full px-3 py-1.5">
-              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>EnEV §21 Nachweisberechtigt
-            </span>
-            <span class="inline-flex items-center gap-1.5 text-xs text-navy/60 bg-navy/5 rounded-full px-3 py-1.5">
-              <span class="h-1.5 w-1.5 rounded-full bg-ib-green"></span>DGS-Solarberater
-            </span>
-            <span class="inline-flex items-center gap-1.5 text-xs text-navy/60 bg-navy/5 rounded-full px-3 py-1.5">
-              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>TÜV Sachkundenachweis PV
-            </span>
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn">Anfrage stellen</a>
+            <a href="#leistungen" class="btn btn-outline">Leistungen</a>
           </div>
         </div>
-
-        <!-- Right: info card -->
-        <div class="flex flex-col gap-4">
-          <!-- Stat cards 2x2 -->
-          <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-xl border border-navy/8 bg-[#F7F8F9] p-6">
-              <div class="text-3xl font-bold text-navy mb-1">2001</div>
-              <div class="text-xs text-navy/55 leading-snug">Gründung des<br/>Ingenieurbüros</div>
-            </div>
-            <div class="rounded-xl border border-navy/8 bg-[#F7F8F9] p-6">
-              <div class="text-3xl font-bold text-navy mb-1">20+</div>
-              <div class="text-xs text-navy/55 leading-snug">Jahre Erfahrung<br/>im Energiebereich</div>
-            </div>
-            <div class="rounded-xl border border-ib-green/25 p-6" style="background:#7CB34208">
-              <div class="flex items-center gap-2 mb-3">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.6" stroke-linecap="round">
-                  <path d="M3 12h7M3 12c0-2 1-3 3-3M3 12c0 2 1 3 3 3M14 6l3 3-3 3M14 12h7M19 18l-3-3 3-3"/>
-                </svg>
-                <span class="text-xs font-semibold text-ib-green">Windenergie</span>
-              </div>
-              <p class="text-xs text-navy/60 leading-snug">Onshore-Projektentwicklung & Genehmigungsplanung</p>
-            </div>
-            <div class="rounded-xl border border-gold/25 p-6" style="background:#F2A90008">
-              <div class="flex items-center gap-2 mb-3">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2A900" stroke-width="1.6" stroke-linecap="round">
-                  <circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
-                </svg>
-                <span class="text-xs font-semibold text-gold">Photovoltaik</span>
-              </div>
-              <p class="text-xs text-navy/60 leading-snug">Ertragsprognosen, Wirtschaftlichkeit & Netzanschluss</p>
-            </div>
+        <div class="contact-card">
+          <div class="contact-card-name">Jörg Hensen</div>
+          <div class="contact-card-title">Dipl.-Ing. (FH) · Bauingenieurwesen</div>
+          <div class="contact-card-row">
+            <span class="contact-card-label">Telefon</span>
+            <a href="tel:+493456826353">+49 (0)345 682 6353</a>
           </div>
-          <!-- Memberships -->
-          <div class="rounded-xl border border-navy/8 bg-[#F7F8F9] px-6 py-4 flex flex-wrap gap-4 text-xs text-navy/55">
-            <span class="flex items-center gap-1.5"><span class="h-1 w-4 rounded bg-navy/20"></span>Ingenieurkammer Sachsen-Anhalt</span>
-            <span class="flex items-center gap-1.5"><span class="h-1 w-4 rounded bg-navy/20"></span>Bundesverband WindEnergie e.V.</span>
+          <div class="contact-card-row">
+            <span class="contact-card-label">E-Mail</span>
+            <a href="mailto:info@ib-hensen.de">info@ib-hensen.de</a>
           </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ÜBER JÖRG HENSEN -->
-    <section id="ueber" class="bg-[#F7F8F9] border-b border-navy/8">
-      <div class="max-w-6xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-[300px_1fr] gap-12 items-start">
-
-        <!-- Sidebar -->
-        <div class="md:sticky md:top-24">
-          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-navy/45 mb-4">Über</p>
-          <h2 class="text-2xl font-bold leading-tight mb-1">Dipl.-Ing. (FH)</h2>
-          <h2 class="text-2xl font-bold leading-tight mb-4">Jörg Hensen</h2>
-          <div class="w-8 h-1 rounded-full bg-gold mb-6"></div>
-          <div class="space-y-3 text-sm">
-            <div class="flex items-start gap-3 p-3.5 rounded-lg bg-white border border-navy/8">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.8" stroke-linecap="round" class="shrink-0 mt-0.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-              <span class="text-navy/70">Studium Bauingenieurwesen, HTWK Leipzig</span>
-            </div>
-            <div class="flex items-start gap-3 p-3.5 rounded-lg bg-white border border-navy/8">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.8" stroke-linecap="round" class="shrink-0 mt-0.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-              <span class="text-navy/70">Mitglied Ingenieurkammer Sachsen-Anhalt</span>
-            </div>
-            <div class="flex items-start gap-3 p-3.5 rounded-lg bg-white border border-navy/8">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.8" stroke-linecap="round" class="shrink-0 mt-0.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-              <span class="text-navy/70">Mitglied Bundesverband WindEnergie e.V.</span>
-            </div>
+          <div class="contact-card-row">
+            <span class="contact-card-label">Adresse</span>
+            <span>Humboldtstr. 46<br/>06114 Halle (Saale)</span>
           </div>
-        </div>
-
-        <!-- Content -->
-        <div class="space-y-6">
-          <div class="bg-white rounded-xl border border-navy/8 p-7">
-            <h3 class="text-sm font-semibold text-navy/40 uppercase tracking-wider mb-3">Werdegang</h3>
-            <p class="text-navy/75 leading-relaxed">
-              Jörg Hensen gründete sein Ingenieurbüro im Jahr 2001, zunächst mit Schwerpunkt Tragwerksplanung.
-              Seit 2004 ist er ausschließlich auf erneuerbare Energien spezialisiert — von frühen Photovoltaikprojekten
-              bis hin zur Entwicklung großer Windenergieprojekte, die er ab 2013 in enger Zusammenarbeit mit einem
-              führenden deutschen Projektentwickler realisiert hat.
-            </p>
-          </div>
-          <div class="bg-white rounded-xl border border-navy/8 p-7">
-            <h3 class="text-sm font-semibold text-navy/40 uppercase tracking-wider mb-3">Fachkompetenz</h3>
-            <p class="text-navy/75 leading-relaxed">
-              Er verfügt über umfassende Kenntnisse in der Standortanalyse, Genehmigungs- und Ausführungsplanung
-              für Wind- und Solarprojekte. Zu seinen nachgewiesenen Qualifikationen zählen die Bauvorlageberechtigung,
-              der TÜV Rheinland Sachkundenachweis für Photovoltaikanlagen sowie das DGS-Solarberater-Zertifikat
-              und die Nachweisberechtigung gemäß EnEV §21.
-            </p>
-          </div>
-          <div class="bg-white rounded-xl border border-navy/8 p-7">
-            <h3 class="text-sm font-semibold text-navy/40 uppercase tracking-wider mb-3">Arbeitsweise</h3>
-            <p class="text-navy/75 leading-relaxed">
-              Als unabhängiger Ingenieur ohne Bindungen an Hersteller oder Investoren stehen die Projektziele
-              seiner Auftraggeber im Mittelpunkt. Er betreut Privatpersonen, Flächeneigentümer, Planungsbüros
-              und Projektentwickler — stets mit dem Anspruch an faire, transparente und partnerschaftliche
-              Zusammenarbeit.
-            </p>
+          <div class="tag-row">
+            <span class="tag">Bauvorlageberechtigung</span>
+            <span class="tag">EnEV §21</span>
+            <span class="tag">DGS-Solarberater</span>
+            <span class="tag">TÜV PV</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- LEISTUNGEN -->
-    <section id="leistungen" class="border-b border-navy/8">
-      <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
-          <div>
-            <p class="text-xs font-semibold tracking-[0.22em] uppercase text-navy/45 mb-3">Leistungen</p>
-            <h2 class="text-3xl font-bold tracking-tight">Was ich für Sie tue</h2>
+  <!-- ÜBER -->
+  <section id="ueber">
+    <div class="container">
+      <div class="ueber-grid">
+        <div>
+          <div class="section-label">Über</div>
+          <div class="ueber-meta">
+            <div><strong>Gründung</strong> 2001</div>
+            <div><strong>Fokus EE</strong> seit 2004</div>
+            <div><strong>Windenergie</strong> seit 2013</div>
+            <div style="margin-top:16px"><strong>Mitglied</strong></div>
+            <div>Ingenieurkammer SA</div>
+            <div>BWE e.V.</div>
           </div>
-          <p class="text-sm text-navy/55 max-w-xs leading-relaxed">
-            Von der ersten Flächeneinschätzung bis zur baureifen Unterlage — ein Ansprechpartner, alle Planungsphasen.
+        </div>
+        <div class="ueber-text">
+          <p>
+            Jörg Hensen ist unabhängiger Ingenieur für die Planung und Entwicklung von
+            Projekten der erneuerbaren Energien. Er gründete sein Büro 2001 und ist seit 2004
+            ausschließlich auf diesen Bereich spezialisiert. Ab 2013 kamen umfangreiche Erfahrungen
+            in der Windenergie-Projektentwicklung bei einem großen deutschen Projektentwickler hinzu.
+          </p>
+          <p>
+            Ohne Bindungen an Hersteller oder Investoren steht er vollständig auf der Seite seiner
+            Auftraggeber — ob Privatperson, Flächeneigentümer, Planungsbüro oder Projektentwickler.
+            Persönliche Beratung, klare Einschätzungen und verlässliche Begleitung bis zum
+            Projektabschluss sind sein Anspruch.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid md:grid-cols-3 gap-5">
+  <!-- LEISTUNGEN -->
+  <section id="leistungen">
+    <div class="container">
+      <div class="section-label">Leistungen</div>
+      <div class="section-title">Was ich für Sie tue</div>
+      <div class="leistungen-list">
 
-          <div class="rounded-xl border border-navy/8 overflow-hidden flex flex-col">
-            <div class="h-2 bg-ib-green"></div>
-            <div class="p-7 flex flex-col flex-1">
-              <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl mb-5" style="background:#7CB34214">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.5" stroke-linecap="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <h3 class="text-base font-semibold mb-3">Potential- und Standortanalyse</h3>
-              <p class="text-sm text-navy/65 leading-relaxed mb-5 flex-1">
-                Realistische Einschätzung von Flächen und Objekten für Wind- und Solarenergie.
-                Auf Basis von GIS-Analysen, Ertragssimulationen und wirtschaftlicher Erstbewertung
-                erhalten Sie eine belastbare Entscheidungsgrundlage.
-              </p>
-              <ul class="space-y-2 text-xs text-navy/55 border-t border-navy/8 pt-4">
-                <li class="flex gap-2.5"><span class="text-ib-green font-bold">+</span>Machbarkeitsstudien & Weißflächenanalysen</li>
-                <li class="flex gap-2.5"><span class="text-ib-green font-bold">+</span>Lastgang- und Verbrauchsanalysen</li>
-                <li class="flex gap-2.5"><span class="text-ib-green font-bold">+</span>GIS-Analysen & Ertragssimulationen</li>
-                <li class="flex gap-2.5"><span class="text-ib-green font-bold">+</span>Cashflow- und Amortisationsrechnung</li>
-              </ul>
-            </div>
+        <div class="leistung">
+          <div class="leistung-nr">01</div>
+          <div class="leistung-body">
+            <h3>Potential- &amp; Standortanalyse</h3>
+            <p>Einschätzung von Flächen und Objekten für Windenergie- oder Solarprojekte — auf Basis von GIS-Analysen, Ertragssimulationen und wirtschaftlicher Bewertung. Ergebnis ist eine belastbare Grundlage für Ihre Entscheidung.</p>
+            <ul class="leistung-punkte">
+              <li>Machbarkeitsstudien & Weißflächenanalysen</li>
+              <li>Lastgang- und Verbrauchsanalysen</li>
+              <li>Cashflow- und Amortisationsrechnung</li>
+            </ul>
           </div>
+        </div>
 
-          <div class="rounded-xl border border-navy/8 overflow-hidden flex flex-col">
-            <div class="h-2 bg-gold"></div>
-            <div class="p-7 flex flex-col flex-1">
-              <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl mb-5" style="background:#F2A90014">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2A900" stroke-width="1.5" stroke-linecap="round">
-                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-              </div>
-              <h3 class="text-base font-semibold mb-3">Planung und Entwicklung</h3>
-              <p class="text-sm text-navy/65 leading-relaxed mb-5 flex-1">
-                Vollständige Genehmigungs- und Ausführungsplanung für Windenergie- und Photovoltaikprojekte,
-                inklusive Bauantrag, Netzanschlussplanung und Koordination aller beteiligten Fachplanungen.
-              </p>
-              <ul class="space-y-2 text-xs text-navy/55 border-t border-navy/8 pt-4">
-                <li class="flex gap-2.5"><span class="text-gold font-bold">+</span>Genehmigungsplanung inkl. Bauantrag</li>
-                <li class="flex gap-2.5"><span class="text-gold font-bold">+</span>Projektkoordination aller Fachgewerke</li>
-                <li class="flex gap-2.5"><span class="text-gold font-bold">+</span>Ertragsprognosen & Wirtschaftlichkeit</li>
-                <li class="flex gap-2.5"><span class="text-gold font-bold">+</span>Netzanschlussplanung & EVU-Abstimmung</li>
-              </ul>
-            </div>
+        <div class="leistung">
+          <div class="leistung-nr">02</div>
+          <div class="leistung-body">
+            <h3>Planung &amp; Entwicklung</h3>
+            <p>Vollständige Genehmigungs- und Ausführungsplanung für Wind- und Solarprojekte inklusive Bauantrag, Fachplanungskoordination und Netzanschlussplanung — aus einer Hand.</p>
+            <ul class="leistung-punkte">
+              <li>Genehmigungsplanung inkl. Bauantrag</li>
+              <li>Ertragsprognosen & Wirtschaftlichkeitsnachweis</li>
+              <li>Netzanschluss & EVU-Abstimmung</li>
+            </ul>
           </div>
+        </div>
 
-          <div class="rounded-xl border border-navy/8 overflow-hidden flex flex-col">
-            <div class="h-2 bg-navy"></div>
-            <div class="p-7 flex flex-col flex-1">
-              <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl mb-5" style="background:#1A2B4C12">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A2B4C" stroke-width="1.5" stroke-linecap="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              </div>
-              <h3 class="text-base font-semibold mb-3">Objekt- und Flächenvermarktung</h3>
-              <p class="text-sm text-navy/65 leading-relaxed mb-5 flex-1">
-                Bewertung und Vermarktungsbegleitung für Flächeneigentümer, die ihre Flächen für
-                Energieprojekte verpachten möchten. Transparente Vermittlung an Projektentwickler
-                auf fairer Grundlage.
-              </p>
-              <ul class="space-y-2 text-xs text-navy/55 border-t border-navy/8 pt-4">
-                <li class="flex gap-2.5"><span class="text-navy/40 font-bold">+</span>Bewertung der Vermarktungsfähigkeit</li>
-                <li class="flex gap-2.5"><span class="text-navy/40 font-bold">+</span>Vermittlung an Projektentwickler</li>
-                <li class="flex gap-2.5"><span class="text-navy/40 font-bold">+</span>Transparente Vertragsbegleitung</li>
-                <li class="flex gap-2.5"><span class="text-navy/40 font-bold">+</span>Einschätzung Pachtkonditionen</li>
-              </ul>
-            </div>
+        <div class="leistung">
+          <div class="leistung-nr">03</div>
+          <div class="leistung-body">
+            <h3>Objekt- &amp; Flächenvermarktung</h3>
+            <p>Bewertung und Begleitung der Vermarktung für Flächeneigentümer, die ihre Flächen für Energieprojekte verpachten möchten — fair, transparent und unabhängig.</p>
+            <ul class="leistung-punkte">
+              <li>Bewertung der Vermarktungsfähigkeit</li>
+              <li>Vermittlung an Projektentwickler</li>
+              <li>Transparente Vertragsbegleitung</li>
+            </ul>
           </div>
+        </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" style="background:var(--gray-50)">
+    <div class="container">
+      <div class="kontakt-grid">
+        <div class="kontakt-intro">
+          <div class="section-label">Kontakt</div>
+          <div class="section-title" style="margin-bottom:16px">Sprechen wir<br/>über Ihr Projekt.</div>
+          <p>Ich beantworte Ihre Anfrage persönlich — ob Erstgespräch, konkrete Planungsaufgabe oder allgemeine Frage zu Ihrem Vorhaben.</p>
+          <div class="kontakt-detail">
+            <div><a href="tel:+493456826353">+49 (0)345 682 6353</a></div>
+            <div><a href="mailto:info@ib-hensen.de">info@ib-hensen.de</a></div>
+            <div style="margin-top:8px;color:var(--gray-500)">Humboldtstr. 46 · 06114 Halle (Saale)</div>
+          </div>
+        </div>
+        <div>
+          <form id="form" onsubmit="submit(event)">
+            <div class="form-row">
+              <div>
+                <label for="name">Name *</label>
+                <input id="name" type="text" required placeholder="Ihr Name" />
+              </div>
+              <div>
+                <label for="email">E-Mail *</label>
+                <input id="email" type="email" required placeholder="ihre@email.de" />
+              </div>
+            </div>
+            <div>
+              <label for="phone">Telefon</label>
+              <input id="phone" type="tel" placeholder="+49 …" />
+            </div>
+            <div>
+              <label for="msg">Nachricht *</label>
+              <textarea id="msg" rows="5" required placeholder="Kurze Beschreibung Ihres Projekts oder Anliegens …"></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%;justify-content:center;">Anfrage senden</button>
+            <p class="form-note">Mit dem Absenden stimmen Sie der Datenschutzerklärung zu.</p>
+            <div id="ok"  class="alert alert-success">Danke — Ihre Nachricht ist eingegangen. Ich melde mich zeitnah.</div>
+            <div id="err" class="alert alert-error">Bitte alle Pflichtfelder ausfüllen.</div>
+          </form>
         </div>
       </div>
-    </section>
-
-    <!-- KONTAKT -->
-    <section id="kontakt" class="bg-[#F7F8F9] border-b border-navy/8">
-      <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
-        <div class="grid md:grid-cols-[1fr_1.5fr] gap-12 items-start">
-
-          <!-- Info -->
-          <div>
-            <p class="text-xs font-semibold tracking-[0.22em] uppercase text-navy/45 mb-3">Kontakt</p>
-            <h2 class="text-3xl font-bold tracking-tight mb-4">Sprechen wir<br/>über Ihr Projekt.</h2>
-            <p class="text-sm text-navy/65 leading-relaxed mb-8">Ob erste Einschätzung oder konkrete Planungsaufgabe — ich beantworte Ihre Anfrage persönlich und zeitnah.</p>
-
-            <div class="space-y-4">
-              <a href="tel:+493456826353" class="flex items-center gap-4 p-4 rounded-xl bg-white border border-navy/8 hover:border-navy/20 transition-colors group">
-                <span class="h-10 w-10 flex items-center justify-center rounded-lg shrink-0" style="background:#7CB34214">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.7" stroke-linecap="round">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="text-xs text-navy/45 font-medium mb-0.5">Telefon</p>
-                  <p class="text-sm font-medium text-navy">+49 (0)345 6826353</p>
-                </div>
-              </a>
-              <a href="mailto:info@ib-hensen.de" class="flex items-center gap-4 p-4 rounded-xl bg-white border border-navy/8 hover:border-navy/20 transition-colors">
-                <span class="h-10 w-10 flex items-center justify-center rounded-lg shrink-0" style="background:#F2A90014">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2A900" stroke-width="1.7" stroke-linecap="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="text-xs text-navy/45 font-medium mb-0.5">E-Mail</p>
-                  <p class="text-sm font-medium text-navy">info@ib-hensen.de</p>
-                </div>
-              </a>
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-navy/8">
-                <span class="h-10 w-10 flex items-center justify-center rounded-lg shrink-0" style="background:#1A2B4C10">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A2B4C" stroke-width="1.7" stroke-linecap="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="text-xs text-navy/45 font-medium mb-0.5">Anschrift</p>
-                  <p class="text-sm font-medium text-navy">Humboldtstr. 46 · 06114 Halle (Saale)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Form -->
-          <div class="bg-white rounded-xl border border-navy/8 p-8">
-            <h3 class="text-base font-semibold mb-6">Anfrage senden</h3>
-            <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="name" class="block text-xs font-semibold text-navy/55 mb-1.5">Name <span class="text-navy/35">*</span></label>
-                  <input id="name" name="name" type="text" required placeholder="Ihr Name"
-                    class="w-full rounded-lg border border-navy/12 px-4 py-2.5 text-sm outline-none focus:border-navy/35 transition-colors placeholder:text-navy/30" />
-                </div>
-                <div>
-                  <label for="email" class="block text-xs font-semibold text-navy/55 mb-1.5">E-Mail <span class="text-navy/35">*</span></label>
-                  <input id="email" name="email" type="email" required placeholder="ihre@email.de"
-                    class="w-full rounded-lg border border-navy/12 px-4 py-2.5 text-sm outline-none focus:border-navy/35 transition-colors placeholder:text-navy/30" />
-                </div>
-              </div>
-              <div class="mb-4">
-                <label for="phone" class="block text-xs font-semibold text-navy/55 mb-1.5">Telefon <span class="text-navy/30">(optional)</span></label>
-                <input id="phone" name="phone" type="tel" placeholder="+49 …"
-                  class="w-full rounded-lg border border-navy/12 px-4 py-2.5 text-sm outline-none focus:border-navy/35 transition-colors placeholder:text-navy/30" />
-              </div>
-              <div class="mb-5">
-                <label for="message" class="block text-xs font-semibold text-navy/55 mb-1.5">Nachricht <span class="text-navy/35">*</span></label>
-                <textarea id="message" name="message" required rows="4" placeholder="Beschreiben Sie kurz Ihr Projekt oder Ihre Fläche …"
-                  class="w-full rounded-lg border border-navy/12 px-4 py-2.5 text-sm outline-none focus:border-navy/35 transition-colors placeholder:text-navy/30 resize-none"></textarea>
-              </div>
-              <button type="submit" class="w-full bg-navy text-white text-sm font-medium rounded-lg py-3 hover:bg-navy-dark transition-colors flex items-center justify-center gap-2">
-                <span id="btn-label">Anfrage absenden</span>
-                <svg id="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                </svg>
-              </button>
-              <div id="form-success" class="hidden mt-4 rounded-lg border px-4 py-3 text-sm" style="background:#7CB34210;border-color:#7CB34230;color:#1A2B4C">
-                Vielen Dank — Ihre Anfrage ist eingegangen. Ich melde mich zeitnah bei Ihnen.
-              </div>
-              <div id="form-error" class="hidden mt-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-                Bitte füllen Sie alle Pflichtfelder aus.
-              </div>
-              <p class="mt-4 text-xs text-navy/40 text-center">Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.</p>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-4">
-      <img src="/ingenieurbuero-hensen/logo.png" alt="Ingenieurbüro Hensen" class="h-8 w-auto opacity-70" />
-      <nav class="flex flex-wrap gap-6 text-xs text-navy/45">
-        <a href="#" class="hover:text-navy transition-colors">Impressum</a>
-        <a href="#" class="hover:text-navy transition-colors">Datenschutz</a>
-        <span>© 2025 Ingenieurbüro Hensen · Halle (Saale)</span>
-      </nav>
+    <div class="container footer-inner">
+      <img src="/ingenieurbuero-hensen/logo.png" alt="Ingenieurbüro Hensen" style="height:28px;width:auto;opacity:0.6" />
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <span style="color:var(--gray-300)">© 2025 Ingenieurbüro Hensen</span>
+      </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu
-    const toggle = document.getElementById('menu-toggle');
-    const nav    = document.getElementById('mobile-nav');
-    const iconO  = document.getElementById('icon-open');
-    const iconC  = document.getElementById('icon-close');
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('hidden');
-      iconO.classList.toggle('hidden');
-      iconC.classList.toggle('hidden');
-    });
-    function closeMobileMenu() {
-      nav.classList.add('hidden');
-      iconO.classList.remove('hidden');
-      iconC.classList.add('hidden');
-      toggle.setAttribute('aria-expanded','false');
-    }
-
-    // Form
-    function handleSubmit(e) {
+    function submit(e) {
       e.preventDefault();
+      const ok  = document.getElementById('ok');
+      const err = document.getElementById('err');
+      ok.style.display = 'none'; err.style.display = 'none';
+
       const n = document.getElementById('name').value.trim();
       const em = document.getElementById('email').value.trim();
-      const msg = document.getElementById('message').value.trim();
-      const err = document.getElementById('form-error');
-      const suc = document.getElementById('form-success');
-      err.classList.add('hidden'); suc.classList.add('hidden');
-      if (!n || !em || !msg) { err.classList.remove('hidden'); return; }
-      const btn = document.querySelector('#contact-form button[type="submit"]');
-      btn.disabled = true; btn.classList.add('opacity-60');
-      document.getElementById('btn-label').textContent = 'Wird gesendet …';
-      document.getElementById('btn-icon').classList.add('hidden');
-      setTimeout(() => {
-        document.getElementById('contact-form').reset();
-        btn.disabled = false; btn.classList.remove('opacity-60');
-        document.getElementById('btn-label').textContent = 'Anfrage absenden';
-        document.getElementById('btn-icon').classList.remove('hidden');
-        suc.classList.remove('hidden');
-      }, 900);
-    }
+      const m = document.getElementById('msg').value.trim();
+      if (!n || !em || !m) { err.style.display = 'block'; return; }
 
-    // Active nav on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const links    = document.querySelectorAll('header nav a[href^="#"]');
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) links.forEach(l => {
-          l.classList.toggle('text-navy', l.getAttribute('href') === '#' + e.target.id);
-          l.classList.toggle('font-semibold', l.getAttribute('href') === '#' + e.target.id);
-        });
-      });
-    }, { threshold: 0.4 }).observe && sections.forEach(s =>
-      new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) links.forEach(l => {
-            const active = l.getAttribute('href') === '#' + e.target.id;
-            l.classList.toggle('text-navy', active);
-            l.classList.toggle('font-semibold', active);
-          });
-        });
-      }, { threshold: 0.35 }).observe(s)
-    );
+      const btn = e.target.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Wird gesendet …';
+      setTimeout(() => {
+        e.target.reset();
+        btn.disabled = false; btn.textContent = 'Anfrage senden';
+        ok.style.display = 'block';
+      }, 800);
+    }
   </script>
+
 </body>
 </html>
