@@ -43,73 +43,47 @@ export default function Footer() {
           whileInView="visible"
           viewport={viewportConfig}
           variants={fadeUp}
-          className="grid md:grid-cols-2 gap-12 mb-16"
+          className="text-center mb-16"
         >
-          {/* Brand */}
-          <div>
-            <button onClick={scrollToTop} className="flex items-center gap-3 group mb-6">
-              <div className="w-9 h-9 rounded-xl overflow-hidden transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                <Image src="/logo.png" alt="Webschmiede Logo" width={36} height={36} className="w-full h-full object-contain" />
-              </div>
-              <span className="font-tight font-bold text-xl text-[#D9D4D4] tracking-tight">
-                WEBSCHMIEDE
-              </span>
-            </button>
-            <p className="text-[#4F5160] text-sm leading-relaxed max-w-sm mb-8">
-              Premium Webdesign für Unternehmen in ganz Deutschland.
-              Persönlich. Fair. Ergebnisorientiert.
-            </p>
-
-            {/* Contact */}
-            <div className="space-y-3">
-              <a
-                href="mailto:henrik.hensen4@gmail.com"
-                className="flex items-center gap-3 text-sm text-[#AEB4B8] hover:text-white transition-colors group w-fit"
-              >
-                <Mail size={14} className="text-[#D0002A]" />
-                henrik.hensen4@gmail.com
-              </a>
-              <a
-                href="tel:015906340148"
-                className="flex items-center gap-3 text-sm text-[#AEB4B8] hover:text-white transition-colors group w-fit"
-              >
-                <Phone size={14} className="text-[#D0002A]" />
-                0159 0634 0148
-              </a>
-              <div className="flex items-center gap-3 text-sm text-[#4F5160]">
-                <MapPin size={14} className="text-[#D0002A]" />
-                Deutschlandweit · Remote & persönlich
-              </div>
+          <button onClick={scrollToTop} className="inline-flex items-center gap-3 group mb-6">
+            <div className="w-9 h-9 rounded-xl overflow-hidden transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+              <Image src="/logo.png" alt="Webschmiede Logo" width={36} height={36} className="w-full h-full object-contain" />
             </div>
-          </div>
+            <span className="font-tight font-bold text-xl text-[#D9D4D4] tracking-tight">
+              WEBSCHMIEDE
+            </span>
+          </button>
+          <p className="text-[#4F5160] text-sm leading-relaxed max-w-sm mx-auto mb-10">
+            Premium Webdesign für Unternehmen in ganz Deutschland.
+            Persönlich. Fair. Ergebnisorientiert.
+          </p>
 
-          {/* CTA box */}
-          <div className="glass-card p-8 border-[#690028]/20">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#D0002A] animate-pulse" />
-              <span className="text-xs text-[#4F5160] font-medium tracking-widest uppercase">
-                Jetzt anfragen
-              </span>
-            </div>
-            <h3 className="font-tight font-bold text-2xl text-white mb-3">
-              Ihre Website in
-              <br />
-              <span className="text-[#AEB4B8] font-normal text-xl">2–3 Wochen — fertig.</span>
-            </h3>
-            <p className="text-[#4F5160] text-sm mb-6 leading-relaxed">
-              Kostenlose Analyse, kein Verkaufsdruck, direkte Antwort.
-              Lassen Sie uns gemeinsam schauen, was für Ihren Betrieb möglich ist.
-            </p>
+          {/* Contact */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
             <a
-              href="#kontakt"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-primary text-sm inline-flex"
+              href="mailto:henrik.hensen4@gmail.com"
+              className="flex items-center gap-3 text-sm text-[#AEB4B8] hover:text-white transition-colors"
             >
-              <span>Kostenlose Analyse</span>
+              <div className="w-8 h-8 rounded-lg glass-card flex items-center justify-center flex-shrink-0">
+                <Mail size={14} className="text-[#D0002A]" />
+              </div>
+              henrik.hensen4@gmail.com
             </a>
+            <a
+              href="tel:015906340148"
+              className="flex items-center gap-3 text-sm text-[#AEB4B8] hover:text-white transition-colors"
+            >
+              <div className="w-8 h-8 rounded-lg glass-card flex items-center justify-center flex-shrink-0">
+                <Phone size={14} className="text-[#D0002A]" />
+              </div>
+              0159 0634 0148
+            </a>
+            <div className="flex items-center gap-3 text-sm text-[#4F5160]">
+              <div className="w-8 h-8 rounded-lg glass-card flex items-center justify-center flex-shrink-0">
+                <MapPin size={14} className="text-[#D0002A]" />
+              </div>
+              Halle (Saale) · Deutschlandweit
+            </div>
           </div>
         </motion.div>
 
